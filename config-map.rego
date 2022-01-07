@@ -31,7 +31,7 @@ user_name = parsed {
 }
 
 user_roles = {
-    "alice": ["guest"],
+    "dahn": ["guest"],
     "bob": ["admin"]
 }
 
