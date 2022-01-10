@@ -1,5 +1,4 @@
 package istio.authz
-package oidc
 
 import input.attributes.request.http as http_request
 import input.parsed_path
