@@ -1,4 +1,5 @@
 package istio.authz
+package oidc
 
 import input.attributes.request.http as http_request
 import input.parsed_path
@@ -44,3 +45,20 @@ role_perms = {
         {"method": "GET",  "path": "/api/v1/products"},
     ],
 }
+
+
+jwks_request(url) = http.send({
+    "url": url,
+    "method": "GET",
+    "force_cache": true,
+    "force_cache_duration_seconds": 3600 # Cache response for an hour
+})
+
+jwks = jwks_request("https://idp-demo.dev.trustid.ch/auth/realms/servicemesh-internship/protocol/openid-connect/certs").raw_body
+
+verified = io.jwt.verify_rs256(input.token, jwks)
+
+allow {
+    verified
+}
+
