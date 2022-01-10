@@ -56,6 +56,7 @@ jwks_request(url) = http.send({
 
 allow {
 	jwks = jwks_request("https://idp-demo.dev.trustid.ch/auth/realms/servicemesh-internship/protocol/openid-connect/certs").raw_body
+	print(input)
 	print("before")
 	print(input.attributes.request.http.headers.authorization)
 	verified = io.jwt.verify_rs256(input.attributes.request.http.headers.authorization, jwks)
