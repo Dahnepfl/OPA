@@ -18,6 +18,10 @@ allow {
 allow {
 	http_request.path == "/"
 }
+allow {
+	http_request.path == "/index"
+}
+
 
 roles_for_user[r] {
 	r := user_roles[user_name][_]
