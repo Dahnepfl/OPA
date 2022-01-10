@@ -16,7 +16,7 @@ allow {
 }
 
 allow {
-	http_request.path == "/"
+	http_request.path == "/a"
 }
 allow {
 	http_request.path == "/index"
