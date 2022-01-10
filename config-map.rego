@@ -15,6 +15,10 @@ allow {
     required_roles[r]
 }
 
+allow {
+    {"method": "GET",  "path": "/index"}
+}
+
 roles_for_user[r] {
     r := user_roles[user_name][_]
 }
