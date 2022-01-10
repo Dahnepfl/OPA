@@ -16,8 +16,9 @@ allow {
 }
 
 allow {
-    {"method": "GET",  "path": "/index"}
+    http_request.path == "/"
 }
+
 
 roles_for_user[r] {
     r := user_roles[user_name][_]
@@ -57,11 +58,11 @@ jwks_request(url) = http.send({
     "force_cache_duration_seconds": 3600 # Cache response for an hour
 })
 
-jwks = jwks_request("https://idp-demo.dev.trustid.ch/auth/realms/servicemesh-internship/protocol/openid-connect/certs").raw_body
-
-verified = io.jwt.verify_rs256(input.token, jwks)
 
 allow {
+    jwks = jwks_request("https://idp-demo.dev.trustid.ch/auth/realms/servicemesh-internship/protocol/openid-connect/certs").raw_body
+
+    verified = io.jwt.verify_rs256(input.token, jwks)
     verified
 }
 
