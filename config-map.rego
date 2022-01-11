@@ -19,7 +19,7 @@ allow {
 	http_request.path == "/a"
 }
 allow {
-	http_request.path == "/index"
+	split(http_request.path, "?")[0] == "/index"
 }
 
 
