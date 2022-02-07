@@ -59,7 +59,7 @@ jwks_request(url) = http.send({
 })
 
 allow {
-	jwks = jwks_request("https://idp-demo.dev.trustid.ch/auth/realms/servicemesh-internship/protocol/openid-connect/certs").raw_body
+	jwks = jwks_request("https://raw.githubusercontent.com/istio/istio/release-1.12/security/tools/jwt/samples/jwks.json").raw_body
 	print("before")
 	tok = (input.attributes.request.http.headers.authorization)
 	tak = substring(tok, 7, -1)
