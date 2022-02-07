@@ -16,6 +16,12 @@ allow {
 	http_request.method == "GET"
 }
 
+
+allow {
+	parsed_path[0] == "health?plugins"
+	http_request.method == "GET"
+}
+
 allow {
 	parsed_path[0] == "health"
 	http_request.method == "GET"
