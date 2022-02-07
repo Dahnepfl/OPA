@@ -18,7 +18,7 @@ allow {
 
 
 allow {
-	parsed_path[0] == "health?plugins"
+	parsed_path[0] == "healthz"
 	http_request.method == "GET"
 }
 
