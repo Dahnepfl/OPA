@@ -5,6 +5,17 @@ import input.parsed_path
 
 default allow = false
 
+
+allow {
+	split(http_request.path, "?")[0] == "health"
+	http_request.method == "GET"
+}
+
+allow {
+	split(http_request.path, "?")[0] == "/health"
+	http_request.method == "GET"
+}
+
 allow {
 	parsed_path[0] == "health"
 	http_request.method == "GET"
