@@ -35,12 +35,15 @@ allow {
 }
 
 allow {
-	http_request.path == "/a"
+	http_request.path = "/a"
 }
+allow {
+	split(http_request.path, "?")[0] != "/"
+}
+
 allow {
 	split(http_request.path, "?")[0] == "/index"
 }
-
 
 roles_for_user[r] {
 	r := user_roles[user_name][_]
